@@ -1,0 +1,6 @@
+Nama Lengkap
+Usia
+Jenis Kelamin
+Alamat
+Nomor Telepon
+Tanggal Lahir

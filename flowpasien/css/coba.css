@@ -1,0 +1,1424 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --color-dark: hsl(252, 30%, 17%);
+  --color-light: hsl(252, 30%, 95%);
+  --color-white: hsl(252, 30%, 100%);
+  --color-gray: hsl(252, 15%, 65%);
+  --color-primary: #001253;
+  --color-secondary: hsl(252, 100%, 90%);
+  --color-success: hsl(120, 95%, 65%);
+  --color-danger: hsl(0, 95%, 65%);
+  --color-black: hsl(252, 30%, 10%);
+
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 0.6rem 2rem;
+  --search-padding: 0.6rem 1rem;
+  --card-padding: 1rem;
+
+  --sticky-top-left: 5.4rem;
+  --sticky-top-right: -18rem;
+
+  --grey: #f1f0f6;
+  --dark-grey: #8d8d8d;
+  --light: #fff;
+  --dark: #000;
+  --green: #81d43a;
+  --light-green: #e3ffcb;
+  --blue: #1775f1;
+  --light-blue: #d0e4ff;
+  --dark-blue: #0c5fcd;
+  --red: #fc3b56;
+  --Ungu: #dad9ff;
+  --AgakPink: #ffb6ef;
+  --Kuning: #f7ffc8;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+}
+
+body {
+  background-color: hsl(252, 30%, 95%);
+  font-family: poppins, Helvetica, sans-serif;
+}
+
+/* HEADER ATAU NAVBAR */
+.header {
+  width: 100%;
+  background: white;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-container {
+  display: grid;
+  grid-template-columns: 70% 23% 7%;
+  grid-template-areas: "header-logo request profile";
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-container .header-logo {
+  grid-area: header-logo;
+}
+
+.header-container .request {
+  grid-area: request;
+  justify-self: end;
+}
+
+.profile {
+  grid-area: profile;
+  width: 2.7rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-self: end;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* INI ADALAH PEMISAH ANTARA INCLUDE DAN KONTEN JANGAN DISENTUH */
+#layoutSidenav {
+  display: grid;
+  grid-template-columns: 20vw auto;
+  grid-gap: 3vw;
+  padding-left: 4vw;
+  top: 5rem;
+}
+
+/* SIDEBAR */
+
+.sb-nav-fixed #layoutSidenav {
+  margin-top: 5rem;
+}
+
+#layoutSidenav .sidebar {
+  position: sticky;
+  grid-column: 1;
+  height: max-content;
+  width: 100%;
+}
+
+#layoutSidenav .sidebar .sidebar-profile {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+  margin-top: 3rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidebar .sidebar-menu {
+  margin-top: 1.5rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidebar .sidebar-menu .menu-item {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  cursor: pointer;
+  transition: all 300ms ease;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sidebar .sidebar-menu .menu-item:hover {
+  background: hsl(252, 30%, 95%);
+}
+
+.sidebar .sidebar-menu i {
+  font-size: 1.4rem;
+  color: var(--color-gray);
+  margin-left: 2rem;
+  position: relative;
+}
+
+.sidebar .sidebar-menu h3 {
+  margin-left: 1.5rem;
+  font-size: 1rem;
+}
+
+.sidebar .sidebar-menu .active {
+  background: var(--color-light);
+}
+
+.sidebar .sidebar-menu .active i,
+.sidebar .sidebar-menu .active h3 {
+  color: var(--color-primary);
+}
+
+.sidebar .sidebar-menu .active::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 100%;
+  position: absolute;
+  background: var(--color-primary);
+}
+
+.sidebar .sidebar-menu .menu-item:first-child.active {
+  border-top-left-radius: var(--card-border-radius);
+  border-top-right-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.sidebar .sidebar-menu .menu-item:last-child.active {
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.sidebar .btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--btn-padding);
+  font-weight: 200;
+  border-radius: var(--card-border-radius);
+  cursor: pointer;
+  transition: all 300ms ease;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
+.text-muted {
+  color: var(--color-gray);
+}
+
+/* INI ADALAH CSS KONTEN UTAMA, JANGAN LUPA BERI KOMENTAR YANG JELAS SUPAYA TIDAK MEMBINGUNGKAN */
+/* PROFIL PASIEN*/
+
+#layoutSidenav .profil-pasien {
+  grid-column: 2;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "profile-tab profile-info"
+    "profile-tab profile-detail";
+  margin-right: 6rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  margin-bottom: 100px;
+}
+
+.foto-pasien img {
+  width: 60%;
+  border-radius: 100%;
+}
+
+.profile-tab img {
+  margin-left: 4.8rem;
+  margin-top: 3rem;
+}
+
+.profile-tab {
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  display: flex;
+  column-gap: 1rem;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profil-pasien .profile-tab {
+  grid-area: profile-tab;
+}
+
+.profil-pasien .profile-info {
+  grid-area: profile-info;
+}
+
+.profil-pasien .profile-detail {
+  grid-area: profile-detail;
+}
+
+.profile-info {
+  padding: 2.5rem;
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-detail span {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-detail {
+  padding: 2.5rem;
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  column-gap: 1rem;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-content {
+  font-weight: 700;
+}
+
+.profile-content .content h4 {
+  color: #000;
+  font-weight: 300;
+}
+
+.contactinformation h4 {
+  color: grey;
+  font-weight: 700;
+}
+
+.basicinformation h4 {
+  color: grey;
+  font-weight: 700;
+}
+
+#layoutSidenav .dashboard-pasien {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 40% auto;
+  grid-gap: 2rem;
+  margin-right: 6rem;
+  margin-top: 3rem;
+}
+
+.diagnosis-upcomming {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--Ungu);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "diagnosis-baris1"
+    "upcomming-baris2";
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.diagnosis-baris1 {
+  grid-area: diagnosis-baris1;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "diagnosis chronic"
+    "status membaik";
+  font-weight: 600;
+  border-bottom: solid 2px var(--color-gray);
+}
+
+.diagnosis {
+  grid-area: diagnosis;
+}
+
+.chronic {
+  grid-area: chronic;
+  text-align: end;
+}
+
+.status {
+  grid-area: status;
+}
+
+.membaik {
+  grid-area: membaik;
+  text-align: end;
+  font-weight: 400;
+}
+
+.upcomming-baris2 {
+  grid-area: upcomming-baris2;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "upcom tanggal"
+    "medic yafi";
+  font-weight: 600;
+}
+
+.upcom {
+  grid-area: upcom;
+}
+
+.tanggal {
+  grid-area: tanggal;
+  text-align: end;
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.medic {
+  grid-area: medic;
+}
+
+.yafi {
+  grid-area: yafi;
+  text-align: end;
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.pemeriksaan-dasar {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "grid-suhu"
+    "grid-tekanan"
+    "grid-berat";
+  background-color: var(--AgakPink);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2rem;
+}
+
+.grid-suhu {
+  grid-area: grid-suhu;
+  display: grid;
+  grid-template-columns: auto auto 17%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.datasuhu {
+  text-align: end;
+  font-weight: 300;
+}
+
+.satuansuhu {
+  text-align: end;
+}
+
+.grid-tekanan {
+  grid-area: grid-tekanan;
+  display: grid;
+  grid-template-columns: auto auto 17%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.datatekanan {
+  text-align: end;
+  font-weight: 300;
+}
+
+.satuantekanan {
+  text-align: end;
+}
+
+.grid-berat {
+  grid-area: grid-berat;
+  display: grid;
+  grid-template-columns: auto auto 17%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.databerat {
+  text-align: end;
+  font-weight: 300;
+}
+
+.satuanberat {
+  text-align: end;
+}
+
+.rawat-jalan {
+  display: grid;
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-rows: max-content auto;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "rawatjalanjudul"
+    "tabelrawatjalan";
+  background-color: var(--Kuning);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2rem;
+  row-gap: 2rem;
+}
+
+.rawatjalanjudul {
+  grid-area: rawatjalanjudul;
+  text-align: center;
+}
+
+.tabelrawatjalan {
+  grid-area: tabelrawatjalan;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+    "nomorantrian"
+    "poliklinik"
+    "pilihandokter"
+    "tanggalpemesanan";
+}
+
+.nomorantrian {
+  grid-area: nomorantrian;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.poliklinik {
+  grid-area: poliklinik;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.pilihandokter {
+  grid-area: pilihandokter;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.tanggalpemesanan {
+  grid-area: tanggalpemesanan;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.medicine-guide-dashboard {
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  grid-template-rows: max-content max-content auto;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "judulmedicineguide"
+    "judultabelmedicineguide"
+    "datamedicineguide";
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.judulmedicineguide {
+  grid-area: judulmedicineguide;
+}
+
+.judultabelmedicineguide {
+  display: grid;
+  grid-area: judultabelmedicineguide;
+  grid-template-columns: repeat(3, auto);
+  grid-template-areas: "namaobat dosis keterangan";
+}
+
+.namaobat {
+  grid-area: namaobat;
+}
+
+.dosis {
+  grid-area: dosis;
+}
+
+.keterangan {
+  grid-area: keterangan;
+}
+
+.datamedicineguide {
+  display: grid;
+  grid-area: datamedicineguide;
+  grid-template-columns: repeat(3, auto);
+  grid-template-areas: "datanamaobat datadosis dataketerangan";
+}
+
+.datanamaobat {
+  grid-area: datanamaobat;
+}
+
+.datadosis {
+  grid-area: datadosis;
+}
+
+.dataketerangan {
+  grid-area: dataketerangan;
+}
+
+/* REQUEST PASIEN */
+.requestpasien {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: fit-content;
+  margin-top: 3rem;
+  grid-template-areas: "gambarreq formreq";
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: 5rem;
+  margin-bottom: 100px;
+}
+
+.gambarreq {
+  grid-area: gambarreq;
+}
+
+.gambarreq img {
+  border-radius: var(--border-radius);
+  height: 100%;
+}
+
+.formreq {
+  grid-area: formreq;
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-template-areas:
+    "textline"
+    "formreqcontent";
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.formreq .textline {
+  grid-area: textline;
+  margin-bottom: 5rem;
+}
+
+.formreq .textline h1 {
+  font-weight: 700;
+}
+
+.formreq .formreqcontent {
+  grid-area: formreqcontent;
+}
+
+.formbold-mb-5 {
+  margin-bottom: 20px;
+}
+
+.formbold-pt-3 {
+  padding-top: 12px;
+}
+
+.formbold-main-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.formbold-form-wrapper {
+  margin: 0 auto;
+  max-width: 550px;
+  width: 100%;
+  background: white;
+}
+.formbold-form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #07074d;
+  margin-bottom: 12px;
+}
+.formbold-form-label-2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.formbold-form-input {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: var(--card-border-radius);
+  border: 1px solid #e0e0e0;
+  background: white;
+  font-weight: 500;
+  font-size: 16px;
+  color: #6b7280;
+  outline: none;
+  resize: none;
+}
+
+.formbold-form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+  text-align: center;
+  font-size: 16px;
+  border-radius: var(--card-border-radius);
+  padding: 14px 32px;
+  border: none;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+.formbold-btn:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold--mx-3 {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+.formbold-px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.w-full {
+  width: 100%;
+}
+
+/* CONDITIONAL PAGE PASIEN RAWAT INAP */
+.kotakBesar {
+  margin-top: 3rem;
+  margin-right: 3vw;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 3fr, 1fr;
+  grid-template-rows: 1fr, 3fr, 1fr;
+  grid-template-areas:
+    "kosong-1 kosong-2 kosong-3 "
+    "kosong-4 kosong-5 kosong-6"
+    "kosong-7 kosong-8 kosong-9";
+  box-sizing: border-box;
+}
+/* ukuran gambar sama margin img */
+.kotakBesar img {
+  width: 200px;
+  margin: auto auto auto auto;
+}
+/* atur tulisan sama letak grid di tengah */
+.kotakBesar .isi-1 {
+  margin: auto auto auto auto;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  display: grid;
+  grid-area: kosong-5;
+}
+
+/* RECAP PASIEN */
+.kotak3 {
+  margin-top: 3rem;
+  margin-right: 3vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.2fr 2fr;
+  grid-template-areas:
+    "jud-1 jud-2 jud-3"
+    "isi-1 isi-2 isi-3";
+  gap: 1vw 3vw;
+  box-sizing: border-box;
+}
+
+/* Bagian Dipesan */
+.kotak3 .jud-1 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-1;
+  display: flex;
+}
+
+.kotak3 .jud-1 span {
+  margin: auto;
+}
+
+.kotak3 .isi-1 {
+  height: max-content;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-area: isi-1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.kotak3 .isi-1 .data-11 {
+  width: 95%;
+  height: 34%;
+  margin: 10px auto 10px auto;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 1.2fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas:
+    "gar11 gar12 gar13"
+    "gar21 gar22 gar23"
+    "gar31 gar32 gar33"
+    "gar41 gar42 gar43"
+    "gar51 gar52 gar53"
+    "gar61 gar62 gar63";
+}
+
+.kotak3 .isi-1 .data-11 .layanan {
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  grid-area: gar21;
+}
+
+.kotak3 .isi-1 .data-11 .tanggal {
+  margin-left: 10%;
+  font-size: 14px;
+  text-align: left;
+  grid-area: gar22;
+  color: #ababab;
+}
+
+/* Bagian Sedang berjalan */
+.kotak3 .jud-2 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-2;
+  display: flex;
+}
+
+.kotak3 .jud-2 span {
+  margin: auto;
+}
+
+.kotak3 .isi-2 {
+  height: max-content;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-area: isi-2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.kotak3 .isi-2 .data-21 {
+  width: 95%;
+  height: 34%;
+  margin: 10px auto 10px auto;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 1.2fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas:
+    "gar11 gar12 gar13"
+    "gar21 gar22 gar23"
+    "gar31 gar32 gar33"
+    "gar41 gar42 gar43"
+    "gar51 gar52 gar53"
+    "gar61 gar62 gar63";
+}
+
+.kotak3 .isi-2 .data-21 .layanan {
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  grid-area: gar21;
+}
+
+.kotak3 .isi-2 .data-21 .tanggal {
+  margin-left: 10%;
+  font-size: 14px;
+  text-align: left;
+  grid-area: gar22;
+  color: #ababab;
+}
+
+/* Bagian Selesai */
+.kotak3 .jud-3 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-3;
+  display: flex;
+}
+
+.kotak3 .jud-3 span {
+  margin: auto;
+}
+
+.kotak3 .isi-3 {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-area: isi-3;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: max-content;
+}
+
+.kotak3 .isi-3 .data-31 {
+  width: 95%;
+  height: 34%;
+  margin: 10px auto 10px auto;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 1.2fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas:
+    "gar11 gar12 gar13"
+    "gar21 gar22 gar23"
+    "gar31 gar32 gar33"
+    "gar41 gar42 gar43"
+    "gar51 gar52 gar53"
+    "gar61 gar62 gar63";
+}
+
+.kotak3 .isi-3 .data-31 .layanan {
+  /* margin-left: 20%; */
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  grid-area: gar21;
+}
+
+.kotak3 .isi-3 .data-31 .tanggal {
+  margin-left: 10%;
+  font-size: 14px;
+  text-align: left;
+  grid-area: gar22;
+  color: #ababab;
+}
+
+.kotak3 .isi-3 .data-31 .total {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar53;
+  color: #ababab;
+}
+
+.kotak3 .isi-3 .data-31 .rp {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar63;
+}
+
+/* MEDICINE CENTER PASIEN*/
+.kotak2 {
+  margin-top: 3rem;
+  margin-right: 3vw;
+  display: grid;
+  grid-template-columns: 2.4fr 1.12fr;
+  grid-template-rows: 0.2fr 2fr;
+  grid-template-areas:
+    "jud-1 jud-2"
+    "isi-1 isi-2";
+  gap: 1vw 3vw;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Bagian Berlangsung */
+.kotak2 .jud-1 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-1;
+  display: flex;
+}
+
+.kotak2 .jud-1 span {
+  margin: auto;
+}
+
+.kotak2 .kotak-isi {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 3fr, 1fr;
+  grid-template-rows: 1fr, 3fr, 1fr;
+  grid-template-areas:
+    "kosong-1 kosong-2 kosong-3 "
+    "kosong-4 kosong-5 kosong-6"
+    "kosong-7 kosong-8 kosong-9";
+  box-sizing: border-box;
+}
+
+/* ukuran gambar sama margin img */
+.kotak-isi img {
+  width: 200px;
+  margin: auto auto auto auto;
+}
+
+/* atur tulisan sama letak grid di tengah */
+.kotak-isi .isi-1 {
+  margin: auto auto auto auto;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  display: grid;
+  grid-area: kosong-5;
+}
+
+.kotak2 .jud-2 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-2;
+  display: flex;
+}
+
+.kotak2 .jud-2 span {
+  margin: auto;
+}
+
+/* Bagian selesai */
+.kotak2 .jud-2 {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 96px;
+  font-size: 25px;
+  font-weight: bold;
+  grid-area: jud-2;
+  display: flex;
+}
+
+.kotak2 .jud-2 span {
+  margin: auto;
+}
+
+.kotak2 .isi-2 {
+  height: max-content;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-area: isi-2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.kotak2 .isi-2 .data-21 {
+  width: 95%;
+  height: 34%;
+  margin: 10px auto 10px auto;
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  grid-template-columns: 1fr, 1.2fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas:
+    "gar11 gar12 gar13"
+    "gar21 gar22 gar23"
+    "gar31 gar32 gar33"
+    "gar41 gar42 gar43"
+    "gar51 gar52 gar53"
+    "gar61 gar62 gar63";
+}
+
+.kotak2 .isi-2 .data-21 .layanan {
+  /* margin-left: 20%; */
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  grid-area: gar21;
+}
+
+.kotak2 .isi-2 .data-21 .tanggal {
+  margin-left: 10%;
+  font-size: 14px;
+  text-align: left;
+  grid-area: gar22;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .obat-1 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar31;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .jumlah-1 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar32;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .obat-2 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar41;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .jumlah-2 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar42;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .obat-3 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar51;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .jumlah-3 {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar52;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .total {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar53;
+  color: #ababab;
+}
+
+.kotak2 .isi-2 .data-21 .rp {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: left;
+  grid-area: gar63;
+}
+
+/* MAIN CONTENT PATIENT FEEDBACK */
+
+.patient-feedback {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: fit-content;
+  margin-top: 3rem;
+  grid-template-areas: "foto-feedback form-feedback";
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-right: 5rem;
+  margin-bottom: 100px;
+}
+
+.foto-feedback {
+  grid-area: foto-feedback;
+}
+
+.foto-feedback img {
+  border-radius: var(--border-radius);
+  height: 100%;
+}
+
+.feedback {
+  grid-area: form-feedback;
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-template-areas:
+    "textline-feedback"
+    "form-feedback-content";
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.feedback .textline-feedback {
+  grid-area: textline-feedback;
+  margin-bottom: 1rem;
+}
+
+.feedback .textline-feedback h1 {
+  font-weight: 700;
+}
+
+.feedback .form-feedback-content {
+  grid-area: form-feedback-content;
+}
+
+/* .patient-feedback .feedback p {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.patient-feedback .feedback input {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-left: 2.5rem;
+} */
+
+.patient-feedback .form-feedback-content button {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 14px 25px;
+  border: none;
+  font-weight: 400;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  margin-top: 25px;
+  font-family: poppins;
+  font-weight: 500;
+}
+
+.patient-feedback .form-feedback-content button:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* MAIN CONTENT PATIENT RAWAT INAP */
+
+#layoutSidenav .patient-inap {
+  grid-column: 2;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 40% 70%;
+  grid-template-areas:
+  "card-info-inap"
+  "finance-medicine-inap";
+  grid-row-gap: 1rem;
+margin-right: 6rem;
+}
+
+.card-info-inap{
+    grid-area: card-info-inap;
+    display: flex;
+    gap: 1rem;
+}
+
+.information-inap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    padding: 2rem;
+    background: #BAFFB4;
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+.total-payment-inap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    padding: 2rem;
+    background: #BAFFB4;
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .nurse-visit-inap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto auto;
+    padding: 2rem;
+    background: #BAFFB4;
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .finance-medicine-inap{
+    grid-area: finance-medicine-inap;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .finance-report-inap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content auto;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .finance-report-inap-judul-tabel{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .finance-report-inap-data-tabel{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .finance-report-inap-data-tabel h3{
+    font-weight: 200;
+    font-size: 14px;
+  }
+
+  .medicine-guide-inap{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content auto;
+    grid-template-areas:
+    "judulmedicineguide-inap"
+    "judultabelmedicineguide-inap"
+    "datamedicineguide-inap";
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+
+
+  .judulmedicineguide-inap {
+    grid-area: judulmedicineguide-inap;
+  }
+
+  .judultabelmedicineguide-inap {
+    display: grid;
+    grid-area: judultabelmedicineguide-inap;
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas: "namaobat-inap dosis-inap keterangan-inap";
+  }
+
+  .namaobat-inap {
+    grid-area: namaobat-inap;
+  }
+
+  .dosis-inap {
+    grid-area: dosis-inap;
+  }
+
+  .keterangan-inap {
+    grid-area: keterangan-inap;
+  }
+
+  .datamedicineguide-inap {
+    display: grid;
+    grid-area: datamedicineguide-inap;
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas: "datanamaobat-inap datadosis-inap dataketerangan-inap";
+    font-size: 14px;
+    font-size: 200;
+}
+
+  .datanamaobat-inap {
+    grid-area: datanamaobat-inap;
+  }
+
+  .datadosis-inap {
+    grid-area: datadosis-inap;
+  }
+
+  .dataketerangan-inap {
+    grid-area: dataketerangan-inap;
+  }
